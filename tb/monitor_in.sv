@@ -47,7 +47,7 @@ class monitor_in extends uvm_monitor;
     virtual task record_tr();
         forever begin
             @(begin_record);
-            begin_tr(tr, "monitor");
+            void'(begin_tr(tr, "monitor"));
             @(end_record);
             end_tr(tr);
         end

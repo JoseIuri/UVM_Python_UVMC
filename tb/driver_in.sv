@@ -65,7 +65,7 @@ class driver_in extends uvm_driver #(tr_in);
     virtual task record_tr();
         forever begin
             @(begin_record);
-            begin_tr(req, "driver_in");
+            void'(begin_tr(req, "driver_in"));
             @(end_record);
             end_tr(req);
         end

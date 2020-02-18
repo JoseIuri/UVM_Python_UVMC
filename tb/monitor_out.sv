@@ -45,7 +45,7 @@ class monitor_out extends uvm_monitor;
     virtual task record_tr();
         forever begin
             @(begin_record);
-            begin_tr(tr, "monitor_out");
+            void'(begin_tr(tr, "monitor_out"));
             @(end_record);
             end_tr(tr);
         end

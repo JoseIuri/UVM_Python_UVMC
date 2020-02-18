@@ -1,3 +1,4 @@
+import uvmc_pkg::*;
 class refmod extends uvm_component;
     `uvm_component_utils(refmod)
     
@@ -38,8 +39,8 @@ class refmod extends uvm_component;
         super.connect_phase(phase);
         out_rm.connect( source_refmod.put_export );
         in_rm.connect( refmod_sink.get_export );
-        uvmc_tlm1 #(tr_in)::connect(source_refmod.get_export,"refmod_i.in");
-        uvmc_tlm1 #(tr_out)::connect(refmod_sink.put_export,"refmod_i.out");
+        uvmc_tlm #(tr_in)::connect(source_refmod.get_export,"refmod_i.in");
+        uvmc_tlm #(tr_out)::connect(refmod_sink.put_export,"refmod_i.out");
     endfunction
 
     virtual task run_phase(uvm_phase phase);

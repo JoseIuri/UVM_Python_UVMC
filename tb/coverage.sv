@@ -27,8 +27,8 @@ class coverage extends uvm_component;
 
   function void build_phase(uvm_phase phase);
     super.build_phase (phase);
-    uvm_config_db#(int)::get(this, "", "min_cover", min_cover);
-    uvm_config_db#(int)::get(this, "", "min_transa", min_transa);
+    void'(uvm_config_db#(int)::get(this, "", "min_cover", min_cover));
+    void'(uvm_config_db#(int)::get(this, "", "min_transa", min_transa));
   endfunction
 
   protected uvm_phase running_phase;

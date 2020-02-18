@@ -1,3 +1,7 @@
+ifeq ("$(UVMC_HOME)","")
+$(error ERROR: UVMC_HOME environment variable is not defined)
+endif
+
 RTL_SRC = ../rtl/
 MODEL_SRC = ../model/
 
@@ -20,6 +24,8 @@ PY3_COPTS=-I/usr/include/python3.6m
 PY3_LOPTS=-lboost_python3 -lboost_system -lpython3.6m
 PY3_OPTS=$(PY3_COPTS) $(PY3_LOPTS)
 
+UVMC_LIB ?= $(UVMC_HOME)/lib
+
 XCELIUM_UVMC_OPTS= -64bit -Wcxx -fPIC -dpi -g -sysc -scsynceverydelta on -tlm2 \
 -DSC_INCLUDE_DYNAMIC_PROCESSES -DINCA -define INCA \
 -uvm -access +r +uvm_set_config_int="*",recording_detail,1 \
@@ -29,7 +35,7 @@ XCELIUM_UVMC_OPTS= -64bit -Wcxx -fPIC -dpi -g -sysc -scsynceverydelta on -tlm2 \
 $(UVMC_HOME)/src/connect/sc/uvmc.cpp -sc_main -I$(UVMC_HOME)/src/connect/sc
 
 sim:
-	@xrun $(XCELIUM_UVMC_OPTS) +incdir+$(RTL_SRC) $(IF) $(RTL) $(PKGS) top.sv -sv_lib test.so \
+	@xrun $(XCELIUM_UVMC_OPTS) $(PY3_OPTS) +incdir+$(RTL_SRC) srs.cpp $(IF) $(RTL) $(PKGS) top.sv -sv_lib test.so \
 	+UVM_TESTNAME=simple_test -covtest simple_test-$(SEED) -svseed $(SEED)  \
 	-defparam top.min_cover=$(COVER) -defparam top.min_transa=$(TRANSA) $(RUN_ARGS_COMMON) $(RUN_ARGS)
 
