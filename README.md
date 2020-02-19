@@ -1,4 +1,4 @@
-# UVM_Python
+# UVM_Python_UVMC
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@
 
 ## Getting Started
 
-Python is a language that provides a high-level programming language for numerical computation and other operations. This repository contains an example of a connection between an UVM testbench and a Python reference model for a simple operation of sum.
+Python is a language that provides a high-level programming language for numerical computation and other operations. This repository contains an example of a connection between an UVM testbench and a Python reference model using Mentor UVM Connect® for a simple operation of sum.
 
 <p align="center">
   <a href="https://www.embedded.ufcg.edu.br/">
@@ -27,7 +27,9 @@ UVM 1.2
 
 Cadence xrun(64): 18.09-s011
 
-Python 3.6
+Python 3.4
+
+UVM Connect 2.3.2
 ```
 
 ## Running the tests
@@ -50,7 +52,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Contributing
 
-1. Fork it (<https://github.com/JoseIuri/UVM_Python/fork>)
+1. Fork it (<https://github.com/JoseIuri/UVM_Python_UVMC/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
@@ -59,6 +61,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * XMEN Lab - Federal University of Campina Grande - Brazil
+* D. Sc. Prof.  Elmar Melcher 
 * Sistenix - (<https://sistenix.com/basic_uvm.html>) 
 
 <p align="center">
