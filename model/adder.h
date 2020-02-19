@@ -58,7 +58,7 @@ SC_MODULE(refmod) {
   }
   SC_CTOR(refmod): in("in"), out("out") {
      SC_THREAD(p);
-     pFunc = load_python("../adder.py","adder");
+     pFunc = load_python("../model/adder.py","adder");
   }
 };
 

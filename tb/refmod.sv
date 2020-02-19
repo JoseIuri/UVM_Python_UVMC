@@ -23,8 +23,8 @@ class refmod extends uvm_component;
         in = new("in", this);
         out = new("out", this);
 
-        in_rm = new("in", this);
-        out_rm = new("out", this);
+        in_rm = new("in_rm", this);
+        out_rm = new("out_rm", this);
 
         source_refmod = new("source_refmod", null, 1);
         refmod_sink  = new("refmod_sink", null, 1);
@@ -37,10 +37,10 @@ class refmod extends uvm_component;
     
     virtual function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
-        out_rm.connect( source_refmod.put_export );
-        in_rm.connect( refmod_sink.get_export );
-        uvmc_tlm #(tr_in)::connect(source_refmod.get_export,"refmod_i.in");
-        uvmc_tlm #(tr_out)::connect(refmod_sink.put_export,"refmod_i.out");
+        in_rm.connect( source_refmod.put_export );
+        out_rm.connect( refmod_sink.get_export );
+        uvmc_tlm1 #(tr_in)::connect(source_refmod.get_export,"refmod_i.in");
+        uvmc_tlm1 #(tr_out)::connect(refmod_sink.put_export,"refmod_i.out");
     endfunction
 
     virtual task run_phase(uvm_phase phase);

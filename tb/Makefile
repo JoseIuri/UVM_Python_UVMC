@@ -20,8 +20,8 @@ TRANSA = 5000
 RUN_ARGS_COMMON = -access +r -input shm.tcl \
           +uvm_set_config_int=*,recording_detail,1 -coverage all -covoverwrite
 
-PY3_COPTS=-I/usr/include/python3.6m
-PY3_LOPTS=-lboost_python3 -lboost_system -lpython3.6m
+PY3_COPTS=-I/usr/include/python3.4m
+PY3_LOPTS=-lboost_python3 -lboost_system -lpython3.4m
 PY3_OPTS=$(PY3_COPTS) $(PY3_LOPTS)
 
 UVMC_LIB ?= $(UVMC_HOME)/lib
@@ -35,7 +35,8 @@ XCELIUM_UVMC_OPTS= -64bit -Wcxx -fPIC -dpi -g -sysc -scsynceverydelta on -tlm2 \
 $(UVMC_HOME)/src/connect/sc/uvmc.cpp -sc_main -I$(UVMC_HOME)/src/connect/sc
 
 sim:
-	@xrun $(XCELIUM_UVMC_OPTS) $(PY3_OPTS) +incdir+$(RTL_SRC) srs.cpp $(IF) $(RTL) $(PKGS) top.sv -sv_lib test.so \
+	@export PATH=$(echo "$PATH" | sed -e 's/\/usr\/local\/mentor\/calibre\/aoj\_cal\_2019.1\_29.17\/bin://')
+	@xrun $(XCELIUM_UVMC_OPTS) $(PY3_OPTS) +incdir+$(RTL_SRC) srs.cpp $(IF) $(RTL) $(PKGS) top.sv \
 	+UVM_TESTNAME=simple_test -covtest simple_test-$(SEED) -svseed $(SEED)  \
 	-defparam top.min_cover=$(COVER) -defparam top.min_transa=$(TRANSA) $(RUN_ARGS_COMMON) $(RUN_ARGS)
 

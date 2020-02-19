@@ -41,7 +41,7 @@ class coverage extends uvm_component;
   //============= Função para copiar transações do agent (Requisições) ======================
   function void write_req(tr_in t);
     req.copy (t);
-    transa = transa + 1;
+    // transa = transa + 1;
     //$display("cobertura:%d",$get_coverage());
     $display("transa:%d",transa);
     $display("min_transa:%d",min_transa);
