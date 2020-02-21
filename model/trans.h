@@ -4,7 +4,7 @@ struct tr_in {
 };
 
 struct tr_out {
-   int data;
+   long int data;
 };
 
 #include <boost/shared_ptr.hpp>
